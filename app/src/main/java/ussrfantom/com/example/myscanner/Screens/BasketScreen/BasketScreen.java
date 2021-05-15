@@ -63,6 +63,18 @@ public class BasketScreen extends AppCompatActivity {
         product2 = new ArrayList<>();
         productFinal = new ArrayList<>();
 
+
+        //удаление свайпом
+        adapter.setOnProductClickListener(new ProductAdapter.OnProductClickListener() {
+            @Override
+            public void OnProductClick(int position) {
+                product2.remove(position);
+                adapter.notifyDataSetChanged();
+            }
+        });
+
+
+
       disposable = apiService.getProducts()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

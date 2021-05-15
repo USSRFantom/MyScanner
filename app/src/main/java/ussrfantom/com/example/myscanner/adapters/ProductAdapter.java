@@ -24,6 +24,16 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     private List<Product> products;
     private int price;
     private String Qr = "";
+    private OnProductClickListener onProductClickListener;
+
+
+    public interface OnProductClickListener {
+        void OnProductClick (int position);
+    }
+
+    public void setOnProductClickListener(OnProductClickListener onProductClickListener) {
+        this.onProductClickListener = onProductClickListener;
+    }
 
     public List<Product> getProducts() {
         return products;
@@ -50,12 +60,28 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         holder.textViewDescription.setText(product.getDescription());
         holder.textViewCost.setText(product.getCost());
         Picasso.get().load(product.getImg()).into(holder.imageViewImg);
-        price = price +  Integer.parseInt(product.getCost());
+
+
+        //обнуление данных о цене и qr коду и новое их создание начало
+        price = 0;
+        Qr = "";
+        Log.i("Обнуление", String.valueOf(price));
+        for (int a = products.size() -1; a >= 0; a--){
+            Product productF = products.get(a);
+            price  = price +  Integer.parseInt(productF.getCost());
+            Qr = Qr + product.getId() + " ";
+        }
+        Log.i("Цена", String.valueOf(price));
+        //обнуление данных о цене и qr коду и новое их создание конец
+
+
+        //отправляем статической переменной весь список для формаирования qr кода начало
         String a = String.valueOf(price);
         BasketScreen.textViewPrice.setText(a);
-        Qr = Qr + product.getId() + " ";
                 Log.i("Отправили с холдера", Qr);//////<---- удалить после тестов
         BasketScreen.TextQr = Qr;
+        //отправляем статической переменной весь список для формаирования qr кода начало
+
 
     }
 
@@ -80,6 +106,14 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             textViewDescription = itemView.findViewById(R.id.textViewDescription);
             imageViewImg = itemView.findViewById(R.id.imageViewBasket);
             textViewId = itemView.findViewById(R.id.textViewID);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (onProductClickListener != null){
+                        onProductClickListener.OnProductClick(getAdapterPosition());
+                    }
+                }
+            });
         }
     }
 
