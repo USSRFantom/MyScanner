@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">MyScanner</string>
+    <string name="logo">Logo</string>
+    <string name="magnit_u_doma">Магнит у дома</string>
+    <string name="go">Продолжить</string>
+    <string name="scann">Сканировать товар</string>
+    <string name="name">Название</string>
+    <string name="description">Описание</string>
+    <string name="cost">Цена:</string>
+    <string name="imageviewbasket">imageViewBasket</string>
+    <string name="imageviewremoval">imageViewRemoval</string>
+    <string name="oplata">оплатить товар</string>
+</resources>
