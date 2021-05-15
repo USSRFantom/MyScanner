@@ -29,7 +29,9 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
     public interface OnProductClickListener {
         void OnProductClick (int position);
+        void OnLongClick (int position);
     }
+
 
     public void setOnProductClickListener(OnProductClickListener onProductClickListener) {
         this.onProductClickListener = onProductClickListener;
@@ -112,6 +114,16 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                     if (onProductClickListener != null){
                         onProductClickListener.OnProductClick(getAdapterPosition());
                     }
+                }
+            });
+
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    if(onProductClickListener != null){
+                        onProductClickListener.OnLongClick(getAdapterPosition());
+                    }
+                    return true;
                 }
             });
         }

@@ -1,7 +1,9 @@
 package ussrfantom.com.example.myscanner.Screens.BasketScreen;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -64,14 +66,31 @@ public class BasketScreen extends AppCompatActivity {
         productFinal = new ArrayList<>();
 
 
-        //удаление свайпом
+        //удаление долгим  нажатием или просто нажитием
         adapter.setOnProductClickListener(new ProductAdapter.OnProductClickListener() {
             @Override
             public void OnProductClick(int position) {
-                product2.remove(position);
-                adapter.notifyDataSetChanged();
+               Toast.makeText(BasketScreen.this, "clicked", Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void OnLongClick(int position) {
+                remove(position);
             }
         });
+
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                remove(viewHolder.getAdapterPosition());
+            }
+        });
+        itemTouchHelper.attachToRecyclerView(recyclerViewBasket);
 
 
 
@@ -117,6 +136,14 @@ public class BasketScreen extends AppCompatActivity {
 
 
     }
+
+    //метод удаления элемента начало
+    private void remove (int position){
+        product2.remove(position);
+        adapter.notifyDataSetChanged();
+    }
+    //метод удаления элемента конец
+
 
     private void scanCode(){
         IntentIntegrator integrator = new IntentIntegrator(this);
