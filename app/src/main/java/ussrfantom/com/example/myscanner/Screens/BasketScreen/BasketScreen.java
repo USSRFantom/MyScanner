@@ -47,6 +47,7 @@ public class BasketScreen extends AppCompatActivity {
     Button buttonPay;
     public static TextView textViewPrice;
     public static String TextQr;
+    String fatal = "Товар ненайден, попробуйте снова";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,7 +103,7 @@ public class BasketScreen extends AppCompatActivity {
                     public void accept(ProductResponse productResponse) throws Exception {
                        // adapter.setProducts(productResponse.getProduct());//////<---- удалить после тестов
                         product2 = productResponse.getProduct();
-                        adapter.setProducts(product2);//////<---- удалить после тестов
+                       // adapter.setProducts(product2);//////<---- удалить после тестов
                     }
                 }, new Consumer<Throwable>() {
                     @Override
@@ -163,7 +164,7 @@ public class BasketScreen extends AppCompatActivity {
                 adapter.setProducts(productFinal);
                 String a = product.getImg();
             }else{
-                Toast.makeText(BasketScreen.this, "Такого товара нет", Toast.LENGTH_SHORT).show();
+                ///Toast.makeText(BasketScreen.this, "Такого товара нет", Toast.LENGTH_SHORT).show(); <---
             }
         }
     }
@@ -190,24 +191,36 @@ public class BasketScreen extends AppCompatActivity {
         if (result != null){
             if (result.getContents() != null){
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setMessage(result.getContents());
-              builder.setTitle("Scanning Result");
-              String a = result.getContents();
-              Log.i("12312312", a);//////<---- удалить после тестов
-                builder.setPositiveButton("Scan Again", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        scanCode();
+
+
+                builder.setMessage(result.getContents());//<-------
+
+
+                for(Product product : product2) {
+                    if (product.getId().equals(result.getContents())){
+                        builder.setTitle(product.getName());
+                        builder.setMessage("Стоимость - " + product.getCost() + "руб.");
+
+                        builder.setPositiveButton("Отмена", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                                //scanCode();
+                            }
+                        }).setNegativeButton("Добавить в корзину", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                                Scanner(result.getContents());
+                            }
+                        });
+                        AlertDialog dialog = builder.create();
+                        dialog.show();
+
+                    }else{
+                        //Toast.makeText(this, fatal, Toast.LENGTH_LONG).show();
                     }
-                }).setNegativeButton("Finish", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                        Scanner(result.getContents());
-                    }
-                });
-                AlertDialog dialog = builder.create();
-                dialog.show();
+                }
             }
             else{
                 Toast.makeText(this, "Товар не найден", Toast.LENGTH_LONG).show();
@@ -216,8 +229,6 @@ public class BasketScreen extends AppCompatActivity {
             super.onActivityResult(requestCode, resultCode, data);
         }
     }
-
-
 }
 
 
