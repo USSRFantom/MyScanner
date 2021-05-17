@@ -15,7 +15,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyScanner">
-        <activity android:name=".Screens.QrCode.QrCode"></activity>
+        <activity android:name=".Screens.Payment.EquaringActivity"></activity>
+        <activity android:name=".Screens.Payment.NoCashActivity" />
+        <activity android:name=".Screens.Payment.CashActivity" />
+        <activity android:name=".Screens.QrCode.QrCode" />
         <activity android:name=".Screens.Greeting.GreetingActivity" />
         <activity android:name=".Screens.BasketScreen.BasketScreen" />
         <activity
