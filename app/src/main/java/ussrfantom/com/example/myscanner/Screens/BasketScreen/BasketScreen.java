@@ -140,7 +140,8 @@ public class BasketScreen extends AppCompatActivity {
 
     //метод удаления элемента начало
     private void remove (int position){
-        product2.remove(position);
+        Toast.makeText(BasketScreen.this, "зашли", Toast.LENGTH_LONG).show();
+        productFinal.remove(position);
         adapter.notifyDataSetChanged();
     }
     //метод удаления элемента конец

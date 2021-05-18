@@ -12,7 +12,7 @@ import ussrfantom.com.example.myscanner.R;
 import ussrfantom.com.example.myscanner.Screens.Greeting.GreetingActivity;
 
 public class SplashScreen extends AppCompatActivity {
-    private final int SPLASH_DISPLAY_LENGHT = 5000;
+    private final int SPLASH_DISPLAY_LENGHT = 25000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
