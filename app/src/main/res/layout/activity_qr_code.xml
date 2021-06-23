@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/grey"
+    android:background="@drawable/depositphotosgadgets"
     tools:context=".Screens.QrCode.QrCode">
 
     <ImageView
@@ -20,10 +20,10 @@
         android:id="@+id/textView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="К оплате:"
+        android:text="Штрих код вашей корзины"
         android:gravity="center"
+        android:textStyle="bold"
         android:textColor="@color/black"
-        android:background="@color/grey"
         android:textSize="24sp"/>
 
     <TextView
@@ -32,7 +32,6 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textColor="@color/black"
-        android:background="@color/grey"
         android:textSize="24sp"/>
 
     <LinearLayout
@@ -47,21 +46,8 @@
             android:layout_height="100dp"
             android:layout_weight="1"
             android:padding="5dp"
-            android:background="@color/grey"
-            android:src="@drawable/imgpay1" />
+            android:src="@drawable/pay_cash_icon" />
 
-        <TextView
-            android:id="@+id/textViewPay1"
-            android:layout_width="50dp"
-            android:layout_height="100dp"
-            android:layout_weight="1"
-            android:background="@color/grey"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            android:padding="5dp"
-            android:text="Оплатить наличными"
-            android:gravity="center"
-            />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -75,20 +61,8 @@
             android:layout_height="100dp"
             android:layout_weight="1"
             android:padding="5dp"
-            android:src="@drawable/pay2"
-            android:background="@color/grey"/>
+            android:src="@drawable/icon_pay_card" />
 
-        <TextView
-            android:id="@+id/textViewPay2"
-            android:layout_width="50dp"
-            android:layout_height="100dp"
-            android:layout_weight="1"
-            android:background="@color/grey"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            android:padding="5dp"
-            android:text="Оплатить картой"
-            android:gravity="center" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -102,20 +76,8 @@
             android:layout_height="100dp"
             android:layout_weight="1"
             android:padding="5dp"
-            android:src="@drawable/pay3"
-            android:background="@color/grey"/>
+            android:src="@drawable/gpay"/>
 
-        <TextView
-            android:id="@+id/textViewPay3"
-            android:layout_width="50dp"
-            android:layout_height="100dp"
-            android:layout_weight="1"
-            android:background="@color/grey"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            android:padding="5dp"
-            android:text="интернет эквайринг"
-            android:gravity="center" />
     </LinearLayout>
 
     </LinearLayout>

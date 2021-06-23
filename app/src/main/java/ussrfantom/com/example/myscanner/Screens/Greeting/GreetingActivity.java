@@ -9,16 +9,19 @@ import android.widget.Button;
 
 import ussrfantom.com.example.myscanner.R;
 import ussrfantom.com.example.myscanner.Screens.BasketScreen.BasketScreen;
+import ussrfantom.com.example.myscanner.Screens.MenuPrice.MenuPrice;
 import ussrfantom.com.example.myscanner.Screens.SplashScreen.SplashScreen;
 
 public class GreetingActivity extends AppCompatActivity {
     Button buttonStart;
+    Button buttonStarConsultant;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_greeting);
         buttonStart = findViewById(R.id.buttonStart);
+        buttonStarConsultant = findViewById(R.id.buttonConsultant);
 
         buttonStart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -28,6 +31,15 @@ public class GreetingActivity extends AppCompatActivity {
                 finish();
             }
 
+        });
+
+        buttonStarConsultant.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(GreetingActivity.this, MenuPrice.class);
+                startActivity(intent);
+                finish();
+            }
         });
     }
 

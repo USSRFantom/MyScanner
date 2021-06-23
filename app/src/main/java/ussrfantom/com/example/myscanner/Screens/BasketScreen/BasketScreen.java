@@ -67,6 +67,7 @@ public class BasketScreen extends AppCompatActivity {
         productFinal = new ArrayList<>();
 
 
+
         //удаление долгим  нажатием или просто нажитием
         adapter.setOnProductClickListener(new ProductAdapter.OnProductClickListener() {
             @Override
@@ -101,9 +102,9 @@ public class BasketScreen extends AppCompatActivity {
                 .subscribe(new Consumer<ProductResponse>() {
                     @Override
                     public void accept(ProductResponse productResponse) throws Exception {
-                       // adapter.setProducts(productResponse.getProduct());//////<---- удалить после тестов
+                       //adapter.setProducts(productResponse.getProduct());//////<---- удалить после тестов
                         product2 = productResponse.getProduct();
-                       // adapter.setProducts(product2);//////<---- удалить после тестов
+                     //adapter.setProducts(product2);//////<---- удалить после тестов
                     }
                 }, new Consumer<Throwable>() {
                     @Override
@@ -136,11 +137,11 @@ public class BasketScreen extends AppCompatActivity {
         });
 
 
+
     }
 
     //метод удаления элемента начало
     private void remove (int position){
-        Toast.makeText(BasketScreen.this, "зашли", Toast.LENGTH_LONG).show();
         productFinal.remove(position);
         adapter.notifyDataSetChanged();
     }

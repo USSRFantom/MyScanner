@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Screens.BasketScreen.BasketScreen"
-    android:background="@color/grey">
+    android:background="@drawable/depositphotosgadgets">
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewBaskert"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@color/grey"
+        android:background="@drawable/depositphotosgadgets"
         app:layout_constraintBottom_toTopOf="@+id/textView4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -46,10 +46,11 @@
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
         android:layout_marginBottom="5dp"
-        android:background="@drawable/bg_start_btn_green"
+        android:background="@drawable/bg_start_btn_red"
         android:text="Оплатить товар"
-        android:textColor="@color/green"
+        android:textColor="@color/red"
         android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
